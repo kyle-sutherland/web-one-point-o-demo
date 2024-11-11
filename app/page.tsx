@@ -1,101 +1,156 @@
-import Image from "next/image";
+import { Section } from "./components/Section";
+import { Card } from "./components/ui/Card/Card";
+import { Button } from "./components/ui/Button/Button";
+import { ComponentDisplay } from "./components/ComponentDisplay";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      <Section variant="secondary">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto">
+            <Card variant="tertiary" title="Windows 95 UI Kit">
+              <p className="text-w95-base mb-4">
+                Tired of all the new design trends? Fly back in time and use
+                this free <em>Windows 95 User Interface Kit</em> to create
+                awesome retro websites.
+              </p>
+              <div className="text-center">
+                <Button
+                  variant="primary"
+                  bordered
+                  onClick={() =>
+                    window.open(
+                      "https://themesberg.com/product/ui-kit/windows-95-ui-kit",
+                    )
+                  }
+                >
+                  Free download
+                </Button>
+              </div>
+            </Card>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </Section>
+
+      {/* Buttons Section */}
+      <Section>
+        <div className="container mx-auto px-4">
+          <h4 className="mb-5">Buttons</h4>
+
+          <ComponentDisplay
+            title="Basic Buttons"
+            code={`
+<button class="btn mr-2 mb-2 btn-primary">
+    <span class="btn-text">Primary</span>
+</button>
+<button class="btn mr-2 mb-2 btn-primary border-dark">
+    <span class="btn-text">Bordered</span>
+</button>
+<button class="btn mr-2 mb-2 btn-primary border-dark-lg">
+    <span class="btn-text">Bordered 2</span>
+</button>
+            `}
+          >
+            <div className="flex flex-wrap gap-2">
+              <Button>Primary</Button>
+              <Button bordered>Bordered</Button>
+              <Button borderedLg>Bordered 2</Button>
+            </div>
+          </ComponentDisplay>
+
+          <h6 className="text-gray-600 my-5">Color Variations</h6>
+          <ComponentDisplay
+            code={`
+<button class="btn mr-2 mb-2 btn-primary">Primary</button>
+<button class="btn mr-2 mb-2 btn-secondary">Secondary</button>
+<button class="btn mr-2 mb-2 btn-tertiary">Tertiary</button>
+            `}
+          >
+            <div className="flex flex-wrap gap-2">
+              <Button variant="primary">Primary</Button>
+              <Button variant="secondary">Secondary</Button>
+              <Button variant="tertiary">Tertiary</Button>
+              <Button variant="info">Info</Button>
+              <Button variant="success">Success</Button>
+              <Button variant="warning">Warning</Button>
+              <Button variant="danger">Danger</Button>
+            </div>
+          </ComponentDisplay>
+
+          <h6 className="text-gray-600 my-5">Sizes</h6>
+          <ComponentDisplay
+            code={`
+<button class="btn btn-sm">Small</button>
+<button class="btn">Regular</button>
+<button class="btn btn-lg">Large</button>
+            `}
+          >
+            <div className="flex flex-wrap items-center gap-2">
+              <Button size="sm">Small</Button>
+              <Button>Regular</Button>
+              <Button size="lg">Large</Button>
+            </div>
+          </ComponentDisplay>
+
+          <h6 className="text-gray-600 my-5">Icon Buttons</h6>
+          <ComponentDisplay
+            code={`
+<button class="btn">
+    <span class="btn-text">📺 Start</span>
+</button>
+            `}
+          >
+            <div className="flex flex-wrap gap-2">
+              <Button icon="📺">Start</Button>
+              <Button icon="⌨">Keyboard</Button>
+              <Button icon="💣">Bomberman</Button>
+              <Button icon="🖨">Print</Button>
+              <Button icon="🔒">Locked</Button>
+            </div>
+          </ComponentDisplay>
+        </div>
+      </Section>
+
+      {/* Forms Section */}
+      <Section>
+        <div className="container mx-auto px-4">
+          <h4 className="mb-5">Forms</h4>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <Card>
+              <form className="space-y-4">
+                <div className="form-group">
+                  <label className="mr-3">Default:</label>
+                  <input type="text" className="form-control w-3/4" />
+                </div>
+                <div className="form-group">
+                  <label className="mr-3">Disabled:</label>
+                  <input type="text" className="form-control w-3/4" disabled />
+                </div>
+                <div className="form-group">
+                  <label className="mr-3">Success:</label>
+                  <input type="text" className="form-control is-valid w-3/4" />
+                </div>
+                <div className="form-group">
+                  <label className="mr-3">Error:</label>
+                  <input
+                    type="text"
+                    className="form-control is-invalid w-3/4"
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="mr-3">Textarea:</label>
+                  <textarea className="form-control w-3/4" rows={4}></textarea>
+                </div>
+                <div className="flex justify-end space-x-2">
+                  <Button bordered>Submit</Button>
+                  <Button>Cancel</Button>
+                </div>
+              </form>
+            </Card>
+          </div>
+        </div>
+      </Section>
+    </>
   );
 }
