@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Card } from "./ui/Card/Card";
 import { Button } from "./ui/Button/Button";
-// import { Tabs } from './ui/Tabs/Tabs'
+import { Tabs } from "./ui/Tabs/Tabs";
 
 interface ComponentDisplayProps {
   title?: string;
