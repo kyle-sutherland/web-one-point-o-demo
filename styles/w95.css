@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+
+  /* Windows 95 Font */
+  @font-face {
+    font-family: 'Windows 95';
+    src: url('/fonts/w-95-sans-serif.woff2') format('woff2'),
+      url('/fonts/w-95-sans-serif.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  /* Base styles */
+  :root {
+    --w95-primary: #c0c0c0;
+    --w95-secondary: #008081;
+    --w95-tertiary: #000181;
+    --w95-border-light: #ffffff;
+    --w95-border-dark: #393939;
+    --w95-border-darker: #262626;
+    --w95-text: #000000;
+  }
+
+  body {
+    @apply font-w95 text-w95-base bg-w95-primary text-w95-text antialiased;
+  }
+}
+
+@layer components {
+
+  /* Button styles */
+  .w95-button-shadow {
+    @apply relative;
+  }
+
+  .w95-button-shadow::before {
+    content: '';
+    @apply absolute inset-0 border-2;
+  }
+
+  .w95-button-shadow:not(:disabled):not(.disabled):active::before {
+    @apply border-w95-border-dark border-t-2 border-l-2 border-w95-border-light border-b-2 border-r-2;
+  }
+
+  /* Card styles */
+  .w95-card {
+    @apply bg-w95-primary border-2 border-t-w95-border-light border-l-w95-border-light border-b-w95-border-dark border-r-w95-border-dark;
+  }
+
+  .w95-card-header {
+    @apply px-2 py-1 font-w95 text-w95-base border-b-2 border-w95-border-dark;
+  }
+
+  /* Form styles */
+  .w95-form-control {
+    @apply w-full px-2 py-1 bg-white text-black border border-w95-border-darker text-w95-base font-w95;
+    @apply focus:outline-none focus:ring-0;
+    @apply disabled:opacity-50 disabled:cursor-not-allowed;
+    @apply placeholder:text-gray-500;
+  }
+
+  /* Checkbox/Radio styles */
+  .w95-checkbox-x {
+    @apply absolute top-0 left-0 h-4 w-4;
+    @apply before:content-[''] before:absolute before:bg-black before:w-[1px] before:h-[17px] before:left-[49%] before:top-[-1px] before:rotate-[135deg];
+    @apply after:content-[''] after:absolute after:bg-black after:w-[1px] after:h-[17px] after:left-[49%] after:top-[-1px] after:rotate-[-135deg];
+  }
+
+  /* Navbar styles */
+  .w95-navbar {
+    @apply h-[38px] px-1 bg-w95-primary border-b-2 border-w95-border-light;
+  }
+
+  .w95-nav-link {
+    @apply relative px-3 py-1 bg-w95-primary text-black font-w95 text-w95-base;
+    @apply before:content-[''] before:absolute before:inset-0 before:border-2;
+  }
+
+  .w95-nav-link.active {
+    @apply before:border-w95-border-dark;
+  }
+
+  /* Dialog/Modal styles */
+  .w95-dialog {
+    @apply fixed inset-0 z-50 flex items-center justify-center p-4;
+    @apply bg-black/20;
+  }
+
+  .w95-dialog-content {
+    @apply w95-card max-w-md w-full;
+  }
+
+  /* Tab styles */
+  .w95-tabs {
+    @apply flex border-b-2 border-[#DEDEDF];
+  }
+
+  .w95-tab {
+    @apply relative bg-w95-primary text-black rounded-t-sm border-r border-[#5A5A5A];
+  }
+
+  .w95-tab-button {
+    @apply px-7 py-1 text-w95-sm italic;
+  }
+
+  .w95-tab-button[aria-selected="true"] {
+    @apply border-r border-[#5A5A5A] relative;
+    @apply after:absolute after:bottom-[-2px] after:left-0 after:w-full after:h-0.5 after:bg-w95-primary;
+  }
+
+  /* Windows 95 scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-4;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-w95-primary;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-w95-primary border-2 border-t-w95-border-light border-l-w95-border-light border-b-w95-border-dark border-r-w95-border-dark;
+  }
+
+  /* Animation utilities */
+  .w95-floating {
+    animation: w95-float 3s ease infinite;
+    will-change: transform;
+  }
+
+  @keyframes w95-float {
+    0% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(10px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+}
+
+/* Custom utility classes */
+@layer utilities {
+  .w95-border-inset {
+    @apply border-2 border-t-w95-border-dark border-l-w95-border-dark border-b-w95-border-light border-r-w95-border-light;
+  }
+
+  .w95-border-outset {
+    @apply border-2 border-t-w95-border-light border-l-w95-border-light border-b-w95-border-dark border-r-w95-border-dark;
+  }
+
+  .w95-shadow-inset {
+    box-shadow: inset -1px -1px var(--w95-border-light),
+      inset 1px 1px var(--w95-border-dark);
+  }
+
+  .w95-shadow-outset {
+    box-shadow: inset -1px -1px var(--w95-border-dark),
+      inset 1px 1px var(--w95-border-light);
+  }
+}
+
+/* Windows 95 Icons */
+.w95-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Base icon styles for common Windows 95 icons */
+.w95-icon-computer {
+  background-image: url('/icons/computer.png');
+}
+
+.w95-icon-folder {
+  background-image: url('/icons/folder.png');
+}
+
+.w95-icon-file {
+  background-image: url('/icons/file.png');
+}
+
+.w95-icon-settings {
+  background-image: url('/icons/settings.png');
+}
+
+.w95-icon-help {
+  background-image: url('/icons/help.png');
+}
+
+/* Focus outline */
+*:focus-visible {
+  outline: 1px dotted #000000;
+  outline-offset: -4px;
+}
+
+/* Selection */
+::selection {
+  background-color: #0004BD;
+  color: white;
+}
+
+/* Disabled state */
+[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
